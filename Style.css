@@ -22,17 +22,16 @@ body {
   font-family: "Courier New", Courier, monospace;
   min-height: 100vh;
   color: var(--dark-color);
-  background-color: var(--grey-color);
+  background-color: rgb(135, 255, 243);
 }
 .wrapper {
   background-color: var(--light-color);
   padding: 1.5rem 4rem 3rem 4rem;
   width: 600px;
   height: 700px;
-  border-top-left-radius: 1.5rem;
-  border-bottom-right-radius: 1.5rem;
+  border-radius: 1.5rem;
   position: relative;
-  box-shadow: 0 4px 6px rgb(0 0 0 / 10%), 0 1px 3px rgb(0 0 0 / 10%);
+  box-shadow: 0 4px 4px 6px rgb(0 0 0 / 10%), 0 1px 3px rgb(0 0 0 / 10%);
 }
 .quiz-title {
   text-align: center;
