@@ -137,6 +137,8 @@ function setCount() {
 
 function restartQuiz() {
   correctScore = askedCount = 0;
+  currentQuestionIndex = 0;
+  questionList = [];
   _playAgainBtn.style.display = "none";
   _checkBtn.style.display = "block";
   _checkBtn.disabled = false;
