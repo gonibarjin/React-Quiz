@@ -27,16 +27,19 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 async function loadQuestion() {
-  const APIUrl = "https://opentdb.com/api.php?amount=10&type=multiple";
+  // this can be used to set totalQuestions as a variable, in case we want to change the number of questions
+  const APIUrl = `https://opentdb.com/api.php?amount=${totalQuestion}&type=multiple`;
   try {
-    if (questionList.length === 0) {
+    // this can be simplified to just check if the questionList is empty
+    if (!questionList.length) {
       const result = await fetch(APIUrl);
       if (!result.ok) {
         throw new Error(`HTTP error! Status: ${result.status}`);
       }
 
       const data = await result.json();
-      if (!data.results || data.results.length === 0) {
+      // this can be simplified to check
+      if (!data.results?.length) {
         throw new Error(`No questions available. Please try again later.`);
       }
 
@@ -44,7 +47,8 @@ async function loadQuestion() {
     }
 
     if (currentQuestionIndex < questionList.length) {
-      _result.innerHTML = "";
+      // this should be textContent for security reasons
+      _result.textContent = "";
       showQuestion(questionList[currentQuestionIndex]); // This load the first question
     }
   } catch (error) {
@@ -89,7 +93,7 @@ function selectOption() {
       option.classList.add("selected");
     });
   });
-
+  // remove console.log from production code
   console.log(correctAnswer);
 }
 
@@ -111,8 +115,9 @@ function checkAnswer() {
 }
 
 function HTMLDecode(textString) {
-  let doc = new DOMParser().parseFromString(textString, "text/html");
-  return doc.documentElement.textContent;
+  // this can be simplified to
+  return new DOMParser().parseFromString(textString, "text/html")
+    .documentElement.textContent;
 }
 
 function checkCount() {
